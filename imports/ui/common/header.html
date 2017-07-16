@@ -1,0 +1,23 @@
+<template name="header">
+  <!-- Navigation bar header -->
+  <nav class="ui fixed top menu navbar page grid" style="margin-bottom: 0px">
+    
+    <a href="/" class="brand item">Lovely Chocolate Chip</a>
+    
+    <div class="right menu">
+      {{#if currentUser}}
+        <!-- If user is signed in -->
+        <div class="ui item">
+          <div class="ui transparent icon input">
+            <input id="search_box" placeholder="Search recipes..." type="text" value="{{query}}">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+        {{> header_dropdown_user}}
+      {{else}}
+        <!-- If user is not signed in -->
+        {{> header_dropdown_nouser}}
+      {{/if}}
+    </div>
+  </nav>
+</template>

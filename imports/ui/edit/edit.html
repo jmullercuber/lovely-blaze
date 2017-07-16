@@ -1,0 +1,64 @@
+<template name="edit">
+  <title>Edit {{name}} | Lovely Chocolate Chip</title>
+
+  <!-- Big content-->
+  <div class="ui grid">
+      <div class="row">
+          <div class="column padding-reset">
+              <div class="ui huge message page grid">
+
+                  <div class="row">
+                    <h1 class="ui large header">Edit your Recipe</h1>
+                    <div class="right floated column">
+                      <button id="requestErase" class="ui negative button">
+                        Erase
+                      </button>
+                      
+                      <div id="eraseModal" class="ui basic modal">
+                        <div class="ui icon header">
+                          <i class="remove icon"></i>
+                          Erase {{name}}?
+                        </div>
+                        <div class="content">
+                          <p>Are you sure you want to erase this recipe? At the moment this action cannot be undone!</p>
+                        </div>
+                        <div class="actions">
+                          <div class="ui gray basic cancel inverted button">
+                            <i class="remove icon"></i>
+                            No
+                          </div>
+                          <div class="ui red ok inverted button">
+                            <i class="checkmark icon"></i>
+                            Yes
+                          </div>
+                        </div>
+                      </div> <!-- End erase confirmation modal-->
+                      
+                    </div>
+                  </div>
+
+                  <form class="ui form">
+                    <div class="field">
+                      <label>Name</label>
+                      <input id="recipeName" value="{{name}}" type="text" placeholder="Name...">
+                    </div>
+                    <div class="field">
+                      <label>Description</label>
+                      <input id="recipeDescription" value="{{description}}" type="text" placeholder="Description...">
+                    </div>
+                    <div class="field">
+                      <label>Ingredients (separate by new lines)</label>
+                      <textarea id="recipeIngredient" value="{{expand(recipeIngredient)}}"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>Instructions (separate by new lines)</label>
+                      <textarea id="recipeInstructions" value="{{expand(recipeInstructions)}}"></textarea>
+                    </div>
+                    <button id="submit" class="ui button" type="submit">Save</button>
+                  </form>
+
+              </div> <!-- End Page Grid 1-->
+          </div>
+      </div>
+  </div>
+</template>

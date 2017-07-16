@@ -1,0 +1,116 @@
+import { Meteor } from 'meteor/meteor';
+
+import { Recipes } from '../imports/model/recipes.js';
+
+import '../imports/ui/common/header.js';
+import '../imports/ui/common/footer.js';
+import '../imports/ui/home/home.js';
+import '../imports/ui/visitor/visitor.js';
+import '../imports/ui/search/search.js';
+import '../imports/ui/recipe/recipe.js';
+import '../imports/ui/create/create.js';
+import '../imports/ui/myrecipes/myrecipes.js';
+import '../imports/ui/edit/edit.js';
+
+// routing by Iron Router
+// http://meteortips.com/second-meteor-tutorial/iron-router-part-1/
+Router.route('/', {
+  name: 'landing',
+  template: 'home',
+  data: function() {
+    rlist = Recipes.find({}).fetch();
+    return {
+      trending: rlist,
+    };
+  },
+  waitOn: function() {
+    return Meteor.subscribe('recipesLastest', 4);
+  },
+  onBeforeAction: function() {
+    var currentUser = Meteor.userId();
+    if (currentUser) {
+      this.next();
+    } else {
+      this.render("visitor");
+    }
+  },
+});
+
+checkSignedIn = function() {
+  var currentUser = Meteor.userId();
+  if (currentUser) {
+    this.next();
+  } else {
+    this.render("not-signedIn");
+  }
+}
+
+// ex: /search?q=bread
+Router.route('/search', {
+  name: 'search',
+  template: 'search',
+  onBeforeAction: checkSignedIn,
+});
+
+// ex: /my-recipes
+Router.route('/my-recipes', {
+  name: 'my-recipes',
+  template: 'myrecipes',
+  data: function() {
+    rlist = Recipes.find({}).fetch();
+    return rlist;
+  },
+  waitOn: function() {
+    return Meteor.subscribe('recipesByMe');
+  },
+  onBeforeAction: checkSignedIn,
+});
+
+// ex: /create
+Router.route('/create', {
+  name: 'create',
+  template: 'create',
+  onBeforeAction: checkSignedIn,
+});
+
+// ex: /recipe/1mc0ifnrWu4
+Router.route('/recipe/:_id', {
+  name: 'recipe',
+  template: 'recipe',
+  data: function() {
+    var recipeId = this.params._id;
+    r = Recipes.findOne({ _id: recipeId });
+    return r;
+  },
+  waitOn: function() {
+    return Meteor.subscribe('recipeById', this.params._id);
+  },
+  onBeforeAction: checkSignedIn,
+});
+
+// ex: /edit/1mc0ifnrWu4
+Router.route('/edit/:_id', function () {
+  // redirect
+  Router.go('edit', { _id: this.params._id });
+});
+
+// ex: /recipe/edit/1mc0ifnrWu4
+Router.route('/recipe/edit/:_id', {
+  name: 'edit',
+  template: 'edit',
+  data: function() {
+    var recipeId = this.params._id;
+    r = Recipes.findOne({ _id: recipeId });
+    return r;
+  },
+  waitOn: function() {
+    return Meteor.subscribe('recipeById', this.params._id);
+  },
+  onBeforeAction: checkSignedIn,
+});
+
+Router.configure({
+    layoutTemplate: 'main',
+    loadingTemplate: 'loading',
+    notFoundTemplate: 'not-found',
+});

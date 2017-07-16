@@ -1,0 +1,50 @@
+<template name="home">
+  <title>Home | Lovely Chocolate Chip</title>
+  
+  <!-- Base content-->
+  <div class="pusher">
+    <!-- Big content-->
+    <div class="ui grid">
+        <div class="row">
+            <div class="column padding-reset">
+                <div class="ui huge message page grid">
+
+                    <h1 class="ui large header row">Newest Recipes</h1>
+
+                    <div class="ui horizontal four stackable cards segments row">
+                      {{#each trending}}
+                        {{> recipecard}}
+                      {{/each}}
+                    </div> <!-- End Trending Segments-->
+
+                    <!--h1 class="ui large header row">Recent Activity</h1>
+
+                    <div class="ui feed row">
+                      {{#each recent_activity}}
+                        <div class="ui event">
+                          <div class="label">
+                            <img src="/images/avatar/small/justen.jpg">
+                          </div>
+                          <div class="content">
+                            <div class="summary">
+                              <a>{{{ owner }}}</a> {{{ details }}}
+                            </div>
+                            <div class="date">
+                              {{{ time }}} ago
+                            </div>
+                            <div class="meta">
+                              <a class="like">
+                                <i class="like icon"></i> 41 Likes
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      {{/each}}
+                    </div--> <!-- End Recent Activity Feed-->
+
+                </div> <!-- End Page Grid 1-->
+            </div>
+        </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+mup setup
+mup deploy

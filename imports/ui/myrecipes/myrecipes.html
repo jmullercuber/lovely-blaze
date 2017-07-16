@@ -1,0 +1,30 @@
+<template name="myrecipes">
+  <title>My Recipes | Lovely Chocolate Chip</title>
+
+  <!-- Big content-->
+  <div class="ui vertical stripe page segment">
+      <div class="ui container">
+
+          <div class="ui grid">
+            <div class="row"> <!--Buttons, links, display query-->
+                <!-- Back button -->
+                <h1 class="header">My Recipes</h1>
+                <!-- Advanced Search Link -->
+            </div> <!--- End Row 1 -->
+
+            <div class="row">
+              {{#if hasRecipes}}
+                <div class="ui four stackable cards">
+                  {{#each this}}
+                    {{> recipecard}}
+                  {{/each}}
+                </div>
+              {{else}}
+                <div>You don't have any recipes yet!</div>
+              {{/if}}
+            </div> <!-- End Row 2 -->
+          </div>
+
+      </div>
+  </div>
+</template>

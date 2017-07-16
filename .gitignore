@@ -1,0 +1,15 @@
+# My specific deployment settings
+settings.json
+mup.js
+
+# Temporary files
+*.~
+
+# Recipe data
+private/*
+!private/README.md
+
+# Meteor and package files
+node_modules/
+client/lib/semantic-ui/
+.meteor/

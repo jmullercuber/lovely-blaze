@@ -1,0 +1,17 @@
+<template name="recipecard">
+  <div class="recipe ui card">
+    
+    <!--img class="image" src="/img.jpg"-->
+    
+    <div class="content">
+      <a class="header" href="{{pathFor route='recipe' _id=_id}}">{{ name }}</a>
+      <div class="meta">
+        {{> rating interactionStatistic }}
+      </div>
+      <div class="description">
+        <p>{{ shortDesc(description) }}</p>
+      </div>
+    </div>
+    
+  </div>
+</template>

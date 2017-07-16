@@ -1,0 +1,36 @@
+<template name="create">
+  <title>Create | Lovely Chocolate Chip</title>
+
+  <!-- Big content-->
+  <div class="ui grid">
+      <div class="row">
+          <div class="column padding-reset">
+              <div class="ui huge message page grid">
+
+                  <h1 class="ui large header row">Write a new Recipe</h1>
+
+                  <form class="ui form">
+                    <div class="field">
+                      <label>Name</label>
+                      <input id="recipeName" type="text" placeholder="Name...">
+                    </div>
+                    <div class="field">
+                      <label>Description</label>
+                      <input id="recipeDescription" type="text" placeholder="Description...">
+                    </div>
+                    <div class="field">
+                      <label>Ingredients (separate by new lines)</label>
+                      <textarea id="recipeIngredient"></textarea>
+                    </div>
+                    <div class="field">
+                      <label>Instructions (separate by new lines)</label>
+                      <textarea id="recipeInstructions"></textarea>
+                    </div>
+                    <button id="submit" class="ui button" type="submit">Create</button>
+                  </form>
+
+              </div> <!-- End Page Grid 1-->
+          </div>
+      </div>
+  </div>
+</template>

@@ -1,0 +1,39 @@
+<head>
+  <title>lovely-blaze</title>
+</head>
+
+<template name="main">
+  {{> header}}
+  
+  <!-- template for current route -->
+  {{> yield}}
+  
+  {{> footer}}
+</template>
+
+<template name="loading">
+  <div class="ui vertical stripe page segment">
+    <div class="ui page container">
+      <div class="ui active massive text loader">Loading</div>
+    </div>
+  </div>
+</template>
+
+<template name="not-found">
+  <div class="ui vertical stripe page segment">
+    <div class="ui page container">
+      <div class="ui massive header">Hey there, sorry but I couldn't find the page you were looking for. Maybe I put it in on top of the fridge.....</div>
+    </div>
+  </div>
+</template>
+
+<template name="not-signedIn">
+  <div class="pusher">
+    <div class="ui vertical masthead center aligned segment">
+      <div class="ui text container">
+        <h1 class="ui large header">Hello there!</h1>
+        <h3 class="row text" align="center">You probably want to see this recipe, huh. Sorry, not until you log in first. Thanks!</h3>
+      </div>
+    </div>
+  </div>
+</template>

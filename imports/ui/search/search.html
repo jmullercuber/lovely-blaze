@@ -1,0 +1,28 @@
+<template name="search">
+  <title>Search recipes for {{ query }} | Lovely Chocolate Chip</title>
+  
+  <!-- Big content-->
+  <div class="ui vertical stripe page segment">
+    <div class="ui container">
+      
+      <div class="ui grid">
+        <div class="row"> <!--Buttons, links, display query-->
+          <!-- Back button -->
+          <h1 class="header">Results for &ldquo;{{ query }}&rdquo;...</h1>
+          <!-- Advanced Search Link -->
+        </div> <!--- End Row 1 -->
+        
+        {{#if isLoading}}
+          <div class="row">Loading ...</div>
+        {{/if}}
+        
+        <div class="ui row four stackable cards">
+          {{#each getResults}}
+            {{> recipecard}}
+          {{/each}}
+        </div><!-- End Row 2 -->
+      </div>
+      
+    </div>
+  </div>
+</template>

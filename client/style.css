@@ -1,0 +1,23 @@
+body {
+  padding-top: 41px;
+}
+
+.masthead.segment {
+  padding: 6em 0em;
+}
+
+.ui.vertical.stripe {
+  padding: 6em 0em;
+}
+
+.footer.segment {
+    padding: 2em 0em;
+}
+
+form {
+  width: 100%;
+}
+
+.recipe.card {
+  min-width: 16em;
+}

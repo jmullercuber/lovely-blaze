@@ -1,0 +1,29 @@
+<template name="header_dropdown_user">
+  <div class="ui floating pointing dropdown item">
+    <!--div class="ui button louout">Logout</div-->
+    <div class="ui text">
+      <!--img class="ui avatar image" src="/images/avatar/small/jenny.jpg"-->
+      {{ currentUser.profile.name }}
+      <i class="dropdown icon"></i>
+    </div>
+    <div class="menu">
+      <!--div class="item">Profile</div-->
+      <!--div class="item">Find</div-->
+      <a class="item" href="{{pathFor route='my-recipes'}}">My Recipes</a>
+      <!--div class="item">Settings</div-->
+      <a class="item link" href="{{pathFor route='create'}}">Create</a>
+      <div class="item link logout">Logout</div>
+    </div>
+  </div>
+</template>
+
+<template name="header_dropdown_nouser">
+  <!-- If user is not signed in -->
+  <div class="ui floating dropdown item">
+    <div class="ui button text">Sign in</div>
+    <div class="menu">
+      <div class="item facebook_login"><i class="facebook icon"></i> Facebook</div>
+      <div class="item google_login"><i class="google icon"></i> Google</div>
+    </div>
+  </div>
+</template>

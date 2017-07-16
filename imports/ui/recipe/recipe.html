@@ -1,0 +1,87 @@
+<template name="recipe">
+  <!-- Facebook Shareable -->
+  <meta property="og:url" content="http://BASE_URL/recipe/{{_id}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{name}} | Lovely Chocolate Chip" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:image" content="http://BASE_URL/images/img.jpg" />
+
+  <title>{{ name }} | Lovely Chocolate Chip</title>
+
+  <!-- Big content-->
+  <div class="ui vertical stripe page segment">
+    <div class="ui container">
+
+      <div class="ui page grid">
+        <div class="two column row"> <!-- Info and pictures -->
+          <div class="column">
+            <!-- Info -->
+            <h2 class="header">
+              {{ name }}
+            </h2>
+            {{#if isOwner}}
+              <a href="{{pathFor route='edit' _id=_id}}">Edit</a>
+            {{/if}}
+            <div class="meta">
+              {{ formatDate(datePublished) }}<br>
+              <i>By {{author}}</i>
+            </div>
+            <div class="row">
+              <!-- Likes/Shares -->
+              <!--div class="ui tiny labeled button" tabindex="0">
+                <div class="ui tiny red button" ng-click="madeIt()">
+                  <i class="heart icon"></i> Made it
+                </div>
+                <div class="ui small modal">
+                  <i class="close icon"></i>
+                  <div class="header">You've Made It!</div>
+                  <div class="content">
+                    <div class="description">
+                      <p>Give <b>{{name}}</b> a rating</p>
+                      <div class="ui star rating" data-max-rating="5"></div>
+                    </div>
+                  </div>
+                  <div class="actions">
+                    <div class="ui button">Cancel</div>
+                    <div class="ui button">OK</div>
+                  </div>
+                </div>
+                <a class="ui basic red left pointing label">
+                  {{interactionStatistic.userInteractionTotal}}
+                </a>
+              </div-->
+              <!--iframe id="fb_like" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe-->
+            </div>
+            <div class="row">
+              {{ description }}
+            </div>
+          </div>
+          <div class="column">
+            <!-- Picture -->
+            <!--img class="image" src="img"-->
+          </div>
+        </div> <!--- End Row 1 -->
+
+        <div class="row"> <!-- Instructions -->
+          <ul><h3>Ingredients</h3>
+            {{#each recipeIngredient}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="row">
+          <ul><h3>Instructions</h3>
+            {{#each recipeInstructions}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+        </div> <!-- End Row 2 -->
+
+        <div class="row"> <!-- Controls -->
+          <!-- Controls go here -->
+        </div> <!-- End Row 3 -->
+      </div>
+
+    </div>
+  </div>
+</template>
