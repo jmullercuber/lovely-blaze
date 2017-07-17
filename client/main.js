@@ -106,7 +106,27 @@ Router.route('/recipe/edit/:_id', {
   waitOn: function() {
     return Meteor.subscribe('recipeById', this.params._id);
   },
-  onBeforeAction: checkSignedIn,
+  onBeforeAction: function() {
+    var currentUser = Meteor.userId();
+    
+    // check user is signed in
+    if (!currentUser) {
+      this.render("not-signedIn");
+    }
+    
+    // chech user owns recipe
+    // as a possible security question, is data read on client??
+    // btw this evals to true for recipes with no owner and user not signed in
+    // hence must check if user signed in first
+    else if (Router.current().data().owner != currentUser) {
+      this.render("access-denied");
+    }
+    
+    // all gucci
+    else {
+      this.next();
+    }
+  },
 });
 
 Router.configure({
