@@ -86,7 +86,7 @@ Meteor.methods({
     currentUser = Meteor.user();
     
     if (!currentUser) {
-      throw new Meteor.Error("not-logged-in", "Attempted editing a new recipe. You're not logged-in");
+      throw new Meteor.Error("not-logged-in", "Attempted editing a recipe. You're not logged-in");
     }
     
     // check if it is your recipe
@@ -125,7 +125,7 @@ Meteor.methods({
     currentUser = Meteor.user();
     
     if (!currentUser) {
-      throw new Meteor.Error("not-logged-in", "Attempted deleting a new recipe. You're not logged-in. Smh, what a crime.");
+      throw new Meteor.Error("not-logged-in", "Attempted deleting a recipe. You're not logged-in. Smh, what a crime.");
     }
     
     // check if it is your recipe

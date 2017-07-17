@@ -33,4 +33,4 @@ cd lovely-blaze
 ./deploy
 ```
 
-Open http://joeymuller.me/ in web browser
+Open https://joeymuller.me/ in web browser
