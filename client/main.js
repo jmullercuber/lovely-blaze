@@ -12,6 +12,16 @@ import '../imports/ui/create/create.js';
 import '../imports/ui/myrecipes/myrecipes.js';
 import '../imports/ui/edit/edit.js';
 
+
+checkSignedIn = function() {
+  var currentUser = Meteor.userId();
+  if (currentUser) {
+    this.next();
+  } else {
+    this.render("not-signedIn");
+  }
+}
+
 // routing by Iron Router
 // http://meteortips.com/second-meteor-tutorial/iron-router-part-1/
 Router.route('/', {
@@ -38,15 +48,6 @@ Router.route('/', {
     }
   },
 });
-
-checkSignedIn = function() {
-  var currentUser = Meteor.userId();
-  if (currentUser) {
-    this.next();
-  } else {
-    this.render("not-signedIn");
-  }
-}
 
 // ex: /search?q=bread
 Router.route('/search', {
