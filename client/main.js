@@ -5,7 +5,7 @@ import { Recipes } from '../imports/model/recipes.js';
 import '../imports/ui/common/header.js';
 import '../imports/ui/common/footer.js';
 import '../imports/ui/home/home.js';
-import '../imports/ui/visitor/visitor.js';
+import '../imports/ui/about/about.js';
 import '../imports/ui/search/search.js';
 import '../imports/ui/recipe/recipe.js';
 import '../imports/ui/create/create.js';
@@ -43,10 +43,16 @@ Router.route('/', {
     } else {
       // for the moment, home content is not dependent on user. Same stuff
       // will have to render different template/modify template for non-users
-      // this.render("visitor");
+      // this.render("about");
       this.next();
     }
   },
+});
+
+// ex: /about
+Router.route('/about', {
+  name: 'about',
+  template: 'about',
 });
 
 // ex: /search?q=bread
