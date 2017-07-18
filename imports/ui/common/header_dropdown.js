@@ -17,7 +17,7 @@ Template.header_dropdown_nouser.onRendered(dropdown);
 Template.header_dropdown_user.events({
   'click div.logout'() {
     Meteor.logout();
-    Router.go('landing');
+    Router.go('home');
   },
 });
 

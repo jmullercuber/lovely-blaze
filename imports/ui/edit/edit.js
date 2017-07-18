@@ -27,7 +27,7 @@ Template.edit.events({
               console.log(error.reason);
             } else {
               // redirect to home page
-              Router.go('landing');
+              Router.go('home');
             }
           });
         }

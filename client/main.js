@@ -15,7 +15,7 @@ import '../imports/ui/edit/edit.js';
 // routing by Iron Router
 // http://meteortips.com/second-meteor-tutorial/iron-router-part-1/
 Router.route('/', {
-  name: 'landing',
+  name: 'home',
   template: 'home',
   data: function() {
     rlist = Recipes.find({}).fetch();
@@ -31,7 +31,10 @@ Router.route('/', {
     if (currentUser) {
       this.next();
     } else {
-      this.render("visitor");
+      // for the moment, home content is not dependent on user. Same stuff
+      // will have to render different template/modify template for non-users
+      // this.render("visitor");
+      this.next();
     }
   },
 });
@@ -49,7 +52,6 @@ checkSignedIn = function() {
 Router.route('/search', {
   name: 'search',
   template: 'search',
-  onBeforeAction: checkSignedIn,
 });
 
 // ex: /my-recipes
@@ -85,7 +87,6 @@ Router.route('/recipe/:_id', {
   waitOn: function() {
     return Meteor.subscribe('recipeById', this.params._id);
   },
-  onBeforeAction: checkSignedIn,
 });
 
 // ex: /edit/1mc0ifnrWu4
